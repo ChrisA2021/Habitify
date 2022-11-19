@@ -23,6 +23,12 @@ struct CardView: View {
                     
             }
             .font(.caption)
+            HStack{
+                Button("Completed") {
+                    
+                }
+                .accessibilityLabel("New habits")
+            }
         }
         .padding(20)
         .foregroundColor(habits.theme.accentColor)
