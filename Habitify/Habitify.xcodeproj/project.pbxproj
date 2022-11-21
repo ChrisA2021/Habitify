@@ -24,6 +24,8 @@
 		2A5BD42B2925E0C700C811C5 /* ThemePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5BD42A2925E0C700C811C5 /* ThemePicker.swift */; };
 		2A5BD42D2925E0DC00C811C5 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5BD42C2925E0DC00C811C5 /* ThemeView.swift */; };
 		2A5BD42F2925F2EC00C811C5 /* HabitsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5BD42E2925F2EC00C811C5 /* HabitsStore.swift */; };
+		2AE625202929D372003CF498 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE6251F2929D372003CF498 /* ErrorView.swift */; };
+		2AE625222929D388003CF498 /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE625212929D388003CF498 /* ErrorWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		2A5BD42A2925E0C700C811C5 /* ThemePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePicker.swift; sourceTree = "<group>"; };
 		2A5BD42C2925E0DC00C811C5 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
 		2A5BD42E2925F2EC00C811C5 /* HabitsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitsStore.swift; sourceTree = "<group>"; };
+		2AE6251F2929D372003CF498 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		2AE625212929D388003CF498 /* ErrorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +130,7 @@
 				2A5BD4282925E05800C811C5 /* DetailEditView.swift */,
 				2A5BD42A2925E0C700C811C5 /* ThemePicker.swift */,
 				2A5BD42C2925E0DC00C811C5 /* ThemeView.swift */,
+				2AE6251F2929D372003CF498 /* ErrorView.swift */,
 			);
 			path = Habitify;
 			sourceTree = "<group>";
@@ -161,6 +166,7 @@
 				2A5BD41C2925DACC00C811C5 /* Theme.swift */,
 				2A5BD41E2925DB2100C811C5 /* DailyHabits.swift */,
 				2A5BD42E2925F2EC00C811C5 /* HabitsStore.swift */,
+				2AE625212929D388003CF498 /* ErrorWrapper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -303,9 +309,11 @@
 				2A5BD4232925DD6B00C811C5 /* TrailingIconLabelStyle.swift in Sources */,
 				2A5BD3A5291E82BD00C811C5 /* ContentView.swift in Sources */,
 				2A5BD4252925DE5000C811C5 /* HabitsView.swift in Sources */,
+				2AE625222929D388003CF498 /* ErrorWrapper.swift in Sources */,
 				2A5BD41F2925DB2100C811C5 /* DailyHabits.swift in Sources */,
 				2A5BD3A3291E82BD00C811C5 /* HabitifyApp.swift in Sources */,
 				2A5BD42F2925F2EC00C811C5 /* HabitsStore.swift in Sources */,
+				2AE625202929D372003CF498 /* ErrorView.swift in Sources */,
 				2A5BD4212925DC6200C811C5 /* CardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

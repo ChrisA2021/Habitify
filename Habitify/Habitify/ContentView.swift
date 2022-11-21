@@ -22,8 +22,12 @@ struct ContentView: View {
             HStack {
                 Text("My Habits").font(.system(size:60)).padding(.top, -220.0)
             }
-            Text("\(currentDay.formatted(date: .complete, time: .omitted))")
-                .padding(.top, -150.0)
+            if #available(iOS 15.0, *) {
+                Text("\(currentDay.formatted(date: .complete, time: .omitted))")
+                    .padding(.top, -150.0)
+            } else {
+                // Fallback on earlier versions
+            }
             HStack {
                 Label("Reading", systemImage: "book")
                 Button("Completed") {

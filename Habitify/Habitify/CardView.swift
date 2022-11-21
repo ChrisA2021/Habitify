@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     let habits: DailyHabits
+    @State private var tempStreak = 0
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -18,20 +19,16 @@ struct CardView: View {
                     .accessibilityAddTraits(.isHeader)
                     .font(.headline)
                 Spacer()
-                Label("\(habits.streak)", systemImage: "flame")
-                    .accessibilityLabel("\(habits.streak) minute meeting").labelStyle(.trailingIcon)
+                Text("\(habits.streak)").font(.body)
+                Text("🔥").font(.body)
+//                Label("\(habits.streak)","😃" )
+//                    .accessibilityLabel("\(habits.streak)").labelStyle(.trailingIcon)
                     
             }
             .font(.caption)
-            HStack{
-                Button("Completed") {
-                    
-                }
-                .accessibilityLabel("New habits")
-            }
         }
         .padding(20)
-        .foregroundColor(habits.theme.accentColor)
+//        .foregroundColor(habits.theme.accentColor)
     }
 }
 

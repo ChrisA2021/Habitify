@@ -19,6 +19,19 @@ class HabitsStore: ObservableObject {
             .appendingPathComponent("habits.data")
     }
     
+    static func load() async throws -> [DailyHabits] {
+            try await withCheckedThrowingContinuation { continuation in
+                load { result in
+                    switch result {
+                    case .failure(let error):
+                        continuation.resume(throwing: error)
+                    case .success(let habits):
+                        continuation.resume(returning: habits)
+                    }
+                }
+            }
+        }
+    
     static func load(completion: @escaping (Result<[DailyHabits], Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
             do {
@@ -40,6 +53,20 @@ class HabitsStore: ObservableObject {
             }
         }
     }
+    
+    @discardableResult
+        static func save(habits: [DailyHabits]) async throws -> Int {
+            try await withCheckedThrowingContinuation { continuation in
+                save(habits: habits) { result in
+                    switch result {
+                    case .failure(let error):
+                        continuation.resume(throwing: error)
+                    case .success(let habitsSaved):
+                        continuation.resume(returning: habitsSaved)
+                    }
+                }
+            }
+        }
     
     static func save(habits: [DailyHabits], completion: @escaping (Result<Int, Error>)->Void) {
         DispatchQueue.global(qos: .background).async {
