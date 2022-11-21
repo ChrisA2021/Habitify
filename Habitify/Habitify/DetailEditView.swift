@@ -35,7 +35,7 @@ struct DetailEditView: View {
                     Text("\(streakCompleted)")
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundColor(Color.blue)
+                        .foregroundColor(Color.red)
                 }
             }
         }
