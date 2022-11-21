@@ -21,6 +21,7 @@ struct CardView: View {
                 Spacer()
                 Text("\(habits.streak)").font(.body)
                 Text("🔥").font(.body)
+//                Text("\(habits.theme)")
 //                Label("\(habits.streak)","😃" )
 //                    .accessibilityLabel("\(habits.streak)").labelStyle(.trailingIcon)
                     
@@ -37,6 +38,7 @@ struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         CardView(habits: habits)
             .background(habits.theme.mainColor)
+//            .background(Color.blue)
             .previewLayout(.fixed(width: 400, height: 60))
     }
 }

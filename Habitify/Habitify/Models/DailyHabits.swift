@@ -55,7 +55,7 @@ extension DailyHabits {
 extension DailyHabits {
     static let sampleData: [DailyHabits] =
     [
-        DailyHabits(title: "Reading", streak: 10, theme: .yellow, lastUpdated: Date().dayBefore),
+        DailyHabits(title: "Reading", streak: 10, theme: .sky, lastUpdated: Date().dayBefore),
         DailyHabits(title: "Exercise",  streak: 5, theme: .orange, lastUpdated: Date().dayBefore),
         DailyHabits(title: "Web Dev",  streak: 5, theme: .poppy, lastUpdated: Date().dayBefore)
     ]
