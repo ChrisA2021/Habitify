@@ -14,6 +14,20 @@ struct DetailView: View {
     @State private var isPresentingEditView = false
     @State private var streakCompleted = "Don't break that streak, complete it now!"
     
+    func updateStreak() {
+        if (Calendar.current.isDateInToday(data.lastUpdated)) {
+            streakCompleted = "You're done for today, check back in tomorrow!"
+        } else {
+            data.title = habits.title
+            data.theme = habits.theme
+            data.lastUpdated = Date()
+            data.streak += 1
+            streakCompleted = "Another day, another win"
+            
+            habits.update(from: data)
+        }
+    }
+    
     var body: some View {
         List {
             Section(header: Text("Habit Info")) {
@@ -38,18 +52,7 @@ struct DetailView: View {
                 Text("Streak: \(Int(data.streak)) days")
                 Spacer()
                 Button("Completed") {
-                    if (Calendar.current.isDateInToday(data.lastUpdated)) {
-                        streakCompleted = "You're done for today, check back in tomorrow!"
-                    }
-                    else {
-                        data.title = habits.title
-                        data.theme = habits.theme
-                        data.lastUpdated = Date()
-                        data.streak = data.streak + 1
-                        streakCompleted = "Another day another win"
-                        
-                        habits.update(from: data)
-                    }
+                    updateStreak()
                 }
             }
             HStack {
