@@ -12,6 +12,21 @@ struct DetailView: View {
     
     @State private var data = DailyHabits.Data()
     @State private var isPresentingEditView = false
+    @State private var streakCompleted = "Don't break that streak, complete it now!"
+    
+    func updateStreak() {
+        if (Calendar.current.isDateInToday(data.lastUpdated)) {
+            streakCompleted = "You're done for today, check back in tomorrow!"
+        } else {
+            data.title = habits.title
+            data.theme = habits.theme
+            data.lastUpdated = Date()
+            data.streak += 1
+            streakCompleted = "Another day, another win"
+            
+            habits.update(from: data)
+        }
+    }
     
     var body: some View {
         List {
@@ -32,6 +47,19 @@ struct DetailView: View {
                         .cornerRadius(4)
                 }
                 .accessibilityElement(children: .combine)
+                }
+            HStack {
+                Text("Streak: \(Int(habits.streak)) days")
+                Spacer()
+                Button("Completed") {
+                    updateStreak()
+                }
+            }
+            HStack {
+                Text("\(streakCompleted)")
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
+                    .foregroundColor(Color.red)
             }
         }
         .navigationTitle(habits.title)

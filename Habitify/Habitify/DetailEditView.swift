@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailEditView: View {
     @Binding var data: DailyHabits.Data
     @State private var newAttendeeName = ""
+    @State private var streakCompleted = "Don't break that streak, complete it now!"
     
     var body: some View {
         Form {

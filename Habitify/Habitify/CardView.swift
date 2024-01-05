@@ -12,26 +12,20 @@ struct CardView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Spacer()
+//            Spacer()
             HStack {
                 Text(habits.title)
                     .accessibilityAddTraits(.isHeader)
                     .font(.headline)
                 Spacer()
-                Label("\(habits.streak)", systemImage: "flame")
-                    .accessibilityLabel("\(habits.streak) minute meeting").labelStyle(.trailingIcon)
+                Text("\(habits.streak)").font(.body)
+                Text("🔥").font(.body)
+              .accessibilityLabel("\(habits.streak)").labelStyle(.trailingIcon)
                     
             }
             .font(.caption)
-            HStack{
-                Button("Completed") {
-                    
-                }
-                .accessibilityLabel("New habits")
-            }
         }
         .padding(20)
-        .foregroundColor(habits.theme.accentColor)
     }
 }
 

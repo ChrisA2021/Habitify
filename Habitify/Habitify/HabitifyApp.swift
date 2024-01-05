@@ -10,28 +10,33 @@ import SwiftUI
 @main
 struct HabitifyApp: App {
     @StateObject private var store = HabitsStore()
+    @State private var errorWrapper: ErrorWrapper?
     
     var body: some Scene {
-        WindowGroup {
-            NavigationView {
-                HabitsView(habits: $store.habits) {
-                    HabitsStore.save(habits: store.habits) { result in
-                        if case .failure(let error) = result {
-                            fatalError(error.localizedDescription)
+            WindowGroup {
+                NavigationView {
+                    HabitsView(habits: $store.habits) {
+                        Task {
+                            do {
+                                try await HabitsStore.save(habits: store.habits)
+                            } catch {
+                                errorWrapper = ErrorWrapper(error: error, guidance: "Try again later.")
+                            }
                         }
                     }
                 }
-            }
-            .onAppear {
-                HabitsStore.load { result in
-                    switch result {
-                    case .failure(let error):
-                        fatalError(error.localizedDescription)
-                    case .success(let habits):
-                        store.habits = habits
+                .task {
+                    do {
+                        store.habits = try await HabitsStore.load()
+                    } catch {
+                        errorWrapper = ErrorWrapper(error: error, guidance: "Habitify will load sample data and continue.")
                     }
+                }
+                .sheet(item: $errorWrapper, onDismiss: {
+                    store.habits = DailyHabits.sampleData
+                }) { wrapper in
+                    ErrorView(errorWrapper: wrapper)
                 }
             }
         }
-    }
 }
