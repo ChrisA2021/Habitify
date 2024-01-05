@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CardView: View {
     let habits: DailyHabits
-    @State private var tempStreak = 0
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -21,15 +20,12 @@ struct CardView: View {
                 Spacer()
                 Text("\(habits.streak)").font(.body)
                 Text("🔥").font(.body)
-//                Text("\(habits.theme)")
-//                Label("\(habits.streak)","😃" )
-//                    .accessibilityLabel("\(habits.streak)").labelStyle(.trailingIcon)
+              .accessibilityLabel("\(habits.streak)").labelStyle(.trailingIcon)
                     
             }
             .font(.caption)
         }
         .padding(20)
-//        .foregroundColor(habits.theme.accentColor)
     }
 }
 
@@ -38,7 +34,6 @@ struct CardView_Previews: PreviewProvider {
     static var previews: some View {
         CardView(habits: habits)
             .background(habits.theme.mainColor)
-//            .background(Color.blue)
             .previewLayout(.fixed(width: 400, height: 60))
     }
 }

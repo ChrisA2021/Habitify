@@ -49,7 +49,7 @@ struct DetailView: View {
                 .accessibilityElement(children: .combine)
                 }
             HStack {
-                Text("Streak: \(Int(data.streak)) days")
+                Text("Streak: \(Int(habits.streak)) days")
                 Spacer()
                 Button("Completed") {
                     updateStreak()
