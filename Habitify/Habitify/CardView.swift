@@ -12,7 +12,7 @@ struct CardView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            Spacer()
+//            Spacer()
             HStack {
                 Text(habits.title)
                     .accessibilityAddTraits(.isHeader)
