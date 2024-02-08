@@ -84,4 +84,28 @@ class HabitsStore: ObservableObject {
             }
         }
     }
+    
+    // Add a function to check if lastUpdated is older than the day before the current day
+    func checkLastUpdated() async {
+        let dayBeforeToday = Calendar.current.date(byAdding: .day, value: -2, to: Date())!
+
+        for i in 0..<habits.count {
+            var habit = habits[i]
+
+            if habit.lastUpdated < dayBeforeToday {
+                // Set streak to 0 for habits that need updating
+                habit.streak = 0
+                habits[i] = habit
+
+                // Save the updated habits
+                do {
+                    try await HabitsStore.save(habits: habits)
+                } catch {
+                    // Handle the error if saving fails
+                    print("Error saving habits after updating streak: \(error)")
+                }
+            }
+        }
+    }
+
 }

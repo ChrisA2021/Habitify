@@ -28,6 +28,7 @@ struct HabitifyApp: App {
                 .task {
                     do {
                         store.habits = try await HabitsStore.load()
+                        await store.checkLastUpdated()
                     } catch {
                         errorWrapper = ErrorWrapper(error: error, guidance: "Habitify will load sample data and continue.")
                     }

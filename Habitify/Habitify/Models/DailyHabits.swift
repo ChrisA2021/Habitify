@@ -27,13 +27,13 @@ extension DailyHabits {
     
     struct Data {
         var title: String = ""
-        var streak: Double = 0
+        var streak: Int = 0
         var theme: Theme = .seafoam
         var lastUpdated: Date = Date().dayBefore
     }
     
     var data: Data {
-        Data(title: title, streak: Double(streak), theme: theme, lastUpdated: lastUpdated)
+        Data(title: title, streak: Int(streak), theme: theme, lastUpdated: lastUpdated)
     }
     
     mutating func update(from data: Data) {

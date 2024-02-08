@@ -21,7 +21,7 @@ struct DetailView: View {
             data.title = habits.title
             data.theme = habits.theme
             data.lastUpdated = Date()
-            data.streak += 1
+            data.streak = habits.streak + 1
             streakCompleted = "Another day, another win"
             
             habits.update(from: data)
