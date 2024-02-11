@@ -12,18 +12,25 @@ struct DetailView: View {
     
     @State private var data = DailyHabits.Data()
     @State private var isPresentingEditView = false
-    @State private var streakCompleted = "Don't break that streak, complete it now!"
+    @State private var streakCompleted = ""
+    
+    func streakMessage() {
+        if (Calendar.current.isDateInToday(habits.lastUpdated)) {
+            streakCompleted = "You're done for today, check back in tomorrow!"
+        }
+        else {
+            streakCompleted = "Don't break that streak, complete it now!"
+        }
+    }
     
     func updateStreak() {
-        if (Calendar.current.isDateInToday(data.lastUpdated)) {
-            streakCompleted = "You're done for today, check back in tomorrow!"
-        } else {
+        // If last updated day is yesterday then update streak
+        if Calendar.current.isDateInYesterday(habits.lastUpdated) {
             data.title = habits.title
             data.theme = habits.theme
             data.lastUpdated = Date()
             data.streak = habits.streak + 1
             streakCompleted = "Another day, another win"
-            
             habits.update(from: data)
         }
     }
@@ -56,7 +63,7 @@ struct DetailView: View {
                 }
             }
             HStack {
-                Text("\(streakCompleted)")
+                Text(streakCompleted)
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(Color.red)
@@ -87,7 +94,7 @@ struct DetailView: View {
                         }
                     }
             }
-        }
+        }.onAppear(perform: streakMessage)
     }
 }
 
