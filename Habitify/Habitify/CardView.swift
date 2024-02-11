@@ -16,9 +16,9 @@ struct CardView: View {
             HStack {
                 Text(habits.title)
                     .accessibilityAddTraits(.isHeader)
-                    .font(.headline)
+                    .font(.headline).foregroundColor(habits.theme.accentColor)
                 Spacer()
-                Text("\(habits.streak)").font(.body)
+                Text("\(habits.streak)").font(.body).foregroundColor(habits.theme.accentColor)
                 Text("🔥").font(.body)
               .accessibilityLabel("\(habits.streak)").labelStyle(.trailingIcon)
                     
